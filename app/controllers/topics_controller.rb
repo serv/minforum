@@ -16,7 +16,8 @@ class TopicsController < ApplicationController
   end
   
   def index
-    @topics = Topic.all
+    @forum = Forum.find(params[:forum_id])
+    @topics = @forum.topics.find_all_by_forum_id(params[:forum_id])
   end
   
   def show
