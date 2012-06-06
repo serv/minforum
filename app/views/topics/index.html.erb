@@ -1,4 +1,5 @@
 <h1>Topics</h1>
+<%= link_to "New Topic", new_forum_topic_path, html_options = {:class => "btn btn-large btn-primary"} %>
 
 <table class="table">
   <tbody>
@@ -7,7 +8,7 @@
         <th>Topics</th>
       </tr>
     </thead>
-    <%= link_to "New Topic", new_forum_topic_path %>
+    
     <% @topics.each do |topic| %>
       <tr>
         <td>
