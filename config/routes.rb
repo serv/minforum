@@ -3,5 +3,7 @@ Minforum::Application.routes.draw do
   resources :forums do
     resources :topics
   end
-  resources :posts
+  resources :topics do
+    resources :posts
+  end
 end
