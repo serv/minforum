@@ -1,0 +1,13 @@
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= @forum.name %>
+      </h1>
+      <p>
+        <%= @forum.description %>
+      </p>
+      <%= link_to "New Topic", new_forum_topic_path %>
+    </section>
+  </aside>
+</div>

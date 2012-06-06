@@ -1,0 +1,12 @@
+<h1>Create a forum</h1>
+<%= form_for(@forum) do |f| %>
+  <!-- render 'shared/error_messages_forum' -->
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.submit "Create a forum", class: "btn btn-large btn-primary" %>
+<% end %>

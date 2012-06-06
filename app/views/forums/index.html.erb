@@ -1,0 +1,30 @@
+<h1>Forums</h1>
+
+<table class="table">
+  <tbody>
+    <thead>
+      <tr>
+        <th>General Forums</th>
+        <th>Topics</th>
+        <th>Posts</th>
+        <th>Last Post</th>
+      </tr>
+    </thead>
+    <% @forums.each do |forum| %>
+      <tr>
+        <td>
+          <strong><%= forum.name %></strong> </br> <%= forum.description %>
+        </td>
+        <td>
+          <!-- forum.topics_count -->
+        </td>
+        <td>
+          <!-- forum.posts_count -->
+        </td>
+        <td>
+          <!-- forum.last_topic_id -->
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
