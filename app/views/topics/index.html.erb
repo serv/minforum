@@ -8,17 +8,26 @@
 </div>
 
 <table class="table">
+  
   <tbody>
     <thead>
       <tr>
         <th>Topics</th>
+        <th>Last Post By</th>
+        <th>Replies</th>
+        <th>Views</th>
       </tr>
     </thead>
-    
     <% @topics.each do |topic| %>
       <tr>
         <td>
-          <%= topic.name %>
+          <%= link_to topic.name, "#" %> </br> Username_placeholder
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
         </td>
       </tr>
     <% end %>

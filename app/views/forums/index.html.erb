@@ -20,7 +20,7 @@
     <% @forums.each do |forum| %>
       <tr>
         <td>
-          <strong><%= link_to forum.name, forum_topics_path(forum) %></strong> </br> <%= forum.description %>
+          <%= link_to forum.name, forum_topics_path(forum) %> </br> <%= forum.description %>
         </td>
         <td>
           <%= forum.topics.count %>
