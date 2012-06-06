@@ -9,3 +9,4 @@ Long term goals
 - Multiple themes
 - Administrator panel
 - User registration
+- Test coverage for core features
