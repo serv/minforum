@@ -7,6 +7,10 @@
       
       <%= f.label :name %>
       <%= f.text_field :name %>
+      
+      <%= f.fields_for :posts do |post| %>
+        <%= render :partial => "posts/form", :locals => {:f => post} %>
+      <% end %>
 
       <%= f.submit "Create a topic", class: "btn btn-large btn-primary" %>
     <% end %>

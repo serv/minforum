@@ -1,5 +1,5 @@
 class AddPreliminaryColumnsToPost < ActiveRecord::Migration
   def change
-    add_column :forums, :content, :text
+    add_column :posts, :content, :text
   end
 end

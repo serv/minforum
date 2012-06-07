@@ -18,13 +18,13 @@ ActiveRecord::Schema.define(:version => 20120606000913) do
     t.datetime "updated_at",  :null => false
     t.string   "name"
     t.text     "description"
-    t.text     "content"
   end
 
   create_table "posts", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "topic_id"
+    t.text     "content"
   end
 
   create_table "topics", :force => true do |t|

@@ -1,0 +1,26 @@
+<div class="row" id="semi-header">
+  <div class="span10">
+    <h1><%= @topic.name %></h1>
+  </div>
+  <div class="span2">
+    <%= link_to "New Post", new_topic_post_path, html_options = {:class => "btn btn-large btn-primary"} %>
+  </div>
+</div>
+
+<table class="table">
+  
+  <tbody>
+    <thead>
+      <tr>
+        <th>Posts</th>
+      </tr>
+    </thead>
+    <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <%= post.content %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
