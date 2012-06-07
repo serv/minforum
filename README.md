@@ -1,8 +1,13 @@
 Minforum is a minimal forum software written in Ruby on Rails
 =============================================================
 
+[Minforum is online!](http://minforum.heroku.com/)
+
 Currently working on ...
-- Association between forum, topics and posts
+- Current nested routing is wrong! Need to redo this.
+- Counting number of posts from forum page
+- Last post datetime information
+- Better navigation around different forums and topics
 
 Short term plans
 - Basic CRUD operations with forums, topics and posts
