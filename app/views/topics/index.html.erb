@@ -21,11 +21,12 @@
     <% @topics.each do |topic| %>
       <tr>
         <td>
-          <%= link_to topic.name, "#" %> </br> Username_placeholder
+          <%= link_to topic.name, topic_posts_path(@forum) %> </br> Username_placeholder
         </td>
         <td>
         </td>
         <td>
+          <%= topic.posts.count-1 %>
         </td>
         <td>
         </td>
