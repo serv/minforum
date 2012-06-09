@@ -26,6 +26,11 @@
           <%= forum.topics.count %>
         </td>
         <td>
+          <% sum = 0 %>
+          <% forum.topics.all.each do |topic| %>
+            <% sum += topic.posts.count %>
+          <% end %>
+          <%= sum - forum.topics.count %>
         </td>
         <td>
           <!-- forum.last_topic_id -->
