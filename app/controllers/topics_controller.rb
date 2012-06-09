@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
     @topic = @forum.topics.build(params[:topic])
     if @topic.save
       flash[:success] = "Success!"
-      redirect_to topic_posts_path(@topic)
+      redirect_to forum_topic_posts_path(@forum, @topic)
     else
       render 'new'
     end
@@ -18,7 +18,9 @@ class TopicsController < ApplicationController
   
   def index
     @forum = Forum.find(params[:forum_id])
-    @topics = @forum.topics.find_all_by_forum_id(params[:forum_id])
+    @topics = @forum.topics.all
+    
+    # @topics = @forum.topics.find_all_by_forum_id(params[:forum_id])
   end
   
   def show
