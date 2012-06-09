@@ -10,11 +10,12 @@ class PostsController < ApplicationController
   end
   
   def create
-    @topic = Topic.find(params[:topic_id])
-    @post = @topic.posts.build(params[:post])
+    @forum = Forum.find(params[:forum_id])
+    @topic = @forum.topics.find(params[:topic_id])
+    @post = @forum.topics.find(params[:topic_id]).posts.build(params[:post])
     if @post.save
       flash[:success] = "Success!"
-      redirect_to topic_posts_path(@topic)
+      redirect_to forum_topic_posts_path(@forum, @topic)
     else
       render 'new'
     end
