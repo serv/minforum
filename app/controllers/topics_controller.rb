@@ -21,7 +21,7 @@ class TopicsController < ApplicationController
     # @forum = Forum.find(params[:forum_id])
     # @topics = @forum.topics.all
     @forum = Forum.find(params[:forum_id])    
-    @topics = @forum.topics.order("'last_post_id' DESC")
+    @topics = @forum.topics.find(:all, :order => "last_post_id DESC")
   end
   
   def show
