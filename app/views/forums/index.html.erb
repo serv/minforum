@@ -14,7 +14,6 @@
         <th>General Forums</th>
         <th>Topics</th>
         <th>Posts</th>
-        <th>Last Post</th>
       </tr>
     </thead>
     <% @forums.each do |forum| %>
@@ -31,9 +30,6 @@
             <% sum += topic.posts.count %>
           <% end %>
           <%= sum - forum.topics.count %>
-        </td>
-        <td>
-          
         </td>
       </tr>
     <% end %>
