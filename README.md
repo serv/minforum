@@ -4,7 +4,6 @@ Minforum is a minimal forum software written in Ruby on Rails
 [Minforum is online!](http://minforum.heroku.com/)
 
 Currently working on ...
-- Last post datetime information
 - View counts on topic
 - Better navigation around different forums and topics
 
