@@ -8,19 +8,20 @@ class TopicsController < ApplicationController
   def create
     @forum = Forum.find(params[:forum_id])
     @topic = @forum.topics.build(params[:topic])
+    @topic.last_post_id = Post.count + 1
     if @topic.save
       flash[:success] = "Success!"
-      redirect_to forum_topic_posts_path(@forum, @topic)
+      redirect_to topic_posts_path(@topic)
     else
       render 'new'
     end
   end
   
   def index
-    @forum = Forum.find(params[:forum_id])
-    @topics = @forum.topics.all
-    
-    # @topics = @forum.topics.find_all_by_forum_id(params[:forum_id])
+    # @forum = Forum.find(params[:forum_id])
+    # @topics = @forum.topics.all
+    @forum = Forum.find(params[:forum_id])    
+    @topics = @forum.topics.order("last_post_id DESC")
   end
   
   def show

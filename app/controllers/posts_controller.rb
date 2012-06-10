@@ -14,6 +14,8 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.build(params[:post])
     if @post.save
+      @topic.last_post_id = @post.id
+      @topic.save
       flash[:success] = "Success!"
       redirect_to topic_posts_path(@topic)
     else
