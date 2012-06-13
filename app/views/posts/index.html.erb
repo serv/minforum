@@ -15,6 +15,7 @@
         <th>Posts</th>
         <th>Users</th>
         <th>Posted at</th>
+        <th>Options</th>
       </tr>
     </thead>
     <% @posts.each do |post| %>
@@ -22,6 +23,7 @@
         <td><%= post.content %></td>
         <td>Username_placeholder</td>
         <td><%= post.created_at %></td>
+        <td><%= link_to 'Delete', [@topic, post], confirm: 'Are you sure?', method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
