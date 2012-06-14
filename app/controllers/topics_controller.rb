@@ -1,4 +1,9 @@
 class TopicsController < ApplicationController
+  def index
+    @forum = Forum.find(params[:forum_id])
+    @topics = @forum.topics.find(:all, :order => "last_post_id DESC")
+  end
+
   def new
     @forum = Forum.find(params[:forum_id])
     @topic = @forum.topics.build
@@ -17,9 +22,18 @@ class TopicsController < ApplicationController
     end
   end
   
-  def index
-    @forum = Forum.find(params[:forum_id])    
-    @topics = @forum.topics.find(:all, :order => "last_post_id DESC")
+  def edit
+    @topic = Topic.find(params[:id])
+  end
+  
+  def update
+    @topic = Topic.find(params[:id])
+    if @topic.update_attributes(params[:topic]) 
+      flash[:success] = "Success!"
+      redirect_to topic_posts_path(@topic)
+    else
+      render 'edit'
+    end
   end
   
   def destroy

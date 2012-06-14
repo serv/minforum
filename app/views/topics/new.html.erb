@@ -5,12 +5,7 @@
     <%= form_for [@forum,@topic] do |f| %>
         <!-- render 'shared/error_messages_topic' -->
       
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-      
-      <%= f.fields_for :posts do |post| %>
-        <%= render :partial => "posts/form", :locals => {:f => post} %>
-      <% end %>
+      <%= render 'form', :f => f %>
 
       <%= f.submit "Create a topic", class: "btn btn-large btn-primary" %>
     <% end %>

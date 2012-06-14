@@ -1,0 +1,19 @@
+<h1>Edit the topic</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @topic do |f| %>
+      <!-- render 'shared/error_messages_topic' -->
+      
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      
+      <%= f.fields_for :posts, @topic.posts.first do |post| %>
+        <%= render :partial => "posts/form", :locals => {:f => post} %>
+      <% end %>
+
+
+      <%= f.submit "Edit", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
