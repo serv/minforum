@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   def index
     @forum = Forum.find(params[:forum_id])
-    @topics = @forum.topics.find(:all, :order => "last_post_id DESC")
+    @topics = @forum.topics.includes(:posts).order('posts.updated_at DESC')
   end
 
   def new
