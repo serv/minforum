@@ -4,12 +4,12 @@ Minforum is a minimal forum software written in Ruby on Rails
 [Minforum is online!](http://minforum.heroku.com/)
 
 Currently working on ...
-- View counts on topic
-- <s>Better navigation around different forums and topics</s>
+- Basic view counts on topic
+- Basic CRUD operations with forums
 
 Short term plans
-- Basic CRUD operations with forums, topics and posts
 - Forum categorization
+- About page
 
 Long term goals
 - Multiple themes
