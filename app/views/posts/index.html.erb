@@ -23,7 +23,8 @@
         <td><%= post.content %></td>
         <td>Username_placeholder</td>
         <td><%= post.created_at %></td>
-        <td><%= link_to 'Delete', [@topic, post], confirm: 'Are you sure?', method: :delete %></td>
+        <td><%= link_to 'Edit', edit_topic_post_path(@topic, post) %> 
+        <%= link_to 'Delete', [@topic, post], confirm: 'Are you sure?', method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
