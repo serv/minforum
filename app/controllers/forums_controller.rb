@@ -17,7 +17,23 @@ class ForumsController < ApplicationController
     @forums = Forum.all
   end
   
-  def show
+  def edit
     @forum = Forum.find(params[:id])
+  end
+  
+  def update
+    @forum = Forum.find(params[:id])
+    if @forum.update_attributes(params[:forum])
+      flash[:success] = "Success!"
+      redirect_to root_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @forum = Forum.find(params[:id])
+    @forum.destroy
+    redirect_to root_path
   end
 end
