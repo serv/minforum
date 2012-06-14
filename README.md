@@ -5,7 +5,7 @@ Minforum is a minimal forum software written in Ruby on Rails
 
 Currently working on ...
 - View counts on topic
-- Better navigation around different forums and topics
+- <s>Better navigation around different forums and topics</s>
 
 Short term plans
 - Basic CRUD operations with forums, topics and posts
