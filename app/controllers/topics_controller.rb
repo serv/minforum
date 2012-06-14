@@ -18,13 +18,15 @@ class TopicsController < ApplicationController
   end
   
   def index
-    # @forum = Forum.find(params[:forum_id])
-    # @topics = @forum.topics.all
     @forum = Forum.find(params[:forum_id])    
     @topics = @forum.topics.find(:all, :order => "last_post_id DESC")
   end
   
-  def show
+  def destroy
     @topic = Topic.find(params[:id])
+    forum_id = @topic.forum_id
+    @topic.destroy
+    flash[:success] = "Topic deleted"
+    redirect_to forum_topics_path(forum_id)
   end
 end
