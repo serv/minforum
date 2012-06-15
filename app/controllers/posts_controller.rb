@@ -1,8 +1,13 @@
 class PostsController < ApplicationController
   def index
     @topic = Topic.find(params[:topic_id])
-    @forum = Forum.find_by_id(@topic.forum_id)
-    @posts = @topic.posts.all
+    @topic.views += 1
+    if @topic.save
+      @forum = Forum.find_by_id(@topic.forum_id)
+      @posts = @topic.posts.all
+    else
+      render 'index'
+    end
   end
   
   def new

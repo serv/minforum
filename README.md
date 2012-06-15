@@ -8,7 +8,6 @@ Currently working on ...
 
 Short term plans
 - Forum categorization
-- About page
 
 Long term goals
 - Multiple themes

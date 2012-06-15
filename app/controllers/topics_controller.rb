@@ -13,7 +13,6 @@ class TopicsController < ApplicationController
   def create
     @forum = Forum.find(params[:forum_id])
     @topic = @forum.topics.build(params[:topic])
-    @topic.last_post_id = Post.count + 1
     if @topic.save
       flash[:success] = "Success!"
       redirect_to topic_posts_path(@topic)

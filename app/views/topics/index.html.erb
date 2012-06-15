@@ -24,7 +24,7 @@
         <td><%= link_to topic.name, topic_posts_path(topic) %> </br> Username_placeholder</td>
         <td>Username_placeholder at </br><%= topic.posts.last.created_at %></td>
         <td><%= topic.posts.count-1 %></td>
-        <td></td>
+        <td><%= topic.views %></td>
         <td><%= link_to 'Edit', edit_topic_path(topic) %> 
         <%= link_to 'Delete', topic, confirm: 'Are you sure?', method: :delete %></td>
       </tr>
