@@ -14,6 +14,7 @@
         <th>General Forums</th>
         <th>Topics</th>
         <th>Posts</th>
+        <th>Views</th>
         <th>Settings</th>
       </tr>
     </thead>
@@ -26,11 +27,10 @@
           <%= forum.topics.count %>
         </td>
         <td>
-          <% sum = 0 %>
-          <% forum.topics.all.each do |topic| %>
-            <% sum += topic.posts.count %>
-          <% end %>
-          <%= sum - forum.topics.count %>
+          <%= total_views forum %>
+        </td>
+        <td>
+          <%= total_posts forum %>
         </td>
         <td>
           <%= link_to 'Edit', edit_forum_path(forum) %> <%= link_to 'Delete', forum, confirm: 'Are you sure?', method: :delete %>
