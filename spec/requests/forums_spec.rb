@@ -19,15 +19,33 @@ describe "Forums" do
     describe "should have correct title" do
       it { should have_selector('title', text: forum_title(title)) }
     end
+    
+    describe "should have correct heading" do
+      it { should have_selector('h1', text: heading) }
+    end
+  end
+  
+  shared_examples_for "forum pages with a form" do
+    describe "should have correct labels" do
+      it { should have_selector('label', text: 'Name') }
+      it { should have_selector('label', text: 'Description') }
+    end
+    
+    describe "should have correct inputs" do
+      it { should have_selector("input[id='forum_name'][name='forum[name]']#{form_name_content(form_name)}") }
+      it { should have_selector("textarea[id='forum_description'][name='forum[description]']", text: form_description) }
+    end
+  
+    describe "should have correct input button" do
+      it { should have_selector("input[class='btn btn-large btn-primary'][name='commit']#{form_button_content(form_submit_button)}") }
+    end
   end
   
   describe "Index forum page" do
     
     before { visit root_path }
-    
     let(:title) {''}
-    
-    it { should have_selector('h1', text: 'Forums') }
+    let(:heading) {'Forums'}
     
     describe "should have valid table headings" do
       it { should have_selector('table thead tr th', text: 'General Forums') }
@@ -48,29 +66,33 @@ describe "Forums" do
   describe "New forum page" do
   
     before { visit new_forum_path }
-    
     let(:title) {'Create a forum'}
-    
-    describe "should have a correct heading" do
-      it { should have_selector('h1', text: 'Create a forum') }
-    end
+    let(:heading) {'Create a forum'}
     
     describe "should have a correct form" do
+      let(:form_name) {''}
+      let(:form_description) {''}
+      let(:form_submit_button) {'Create a forum'}
       
-      describe "should have correct labels" do
-        it { should have_selector('label', text: 'Name') }
-        it { should have_selector('label', text: 'Description') }
-      end
+      it_should_behave_like 'forum pages with a form'
+    end
     
-      describe "should have correct inputs" do
-        it { should have_selector("input[id='forum_name'][name='forum[name]']") }
-        it { should have_selector("textarea[id='forum_description'][name='forum[description]']") }
-      end
+    it_should_behave_like 'all forum pages'
+  end
+  
+  describe "Edit forum page" do
     
-      describe "should have correct input button" do
-        it { should have_selector("input[class='btn btn-large btn-primary'][name='commit']") }
-      end
+    let(:forum) { FactoryGirl.create(:forum) }
+    before { visit edit_forum_path(forum) }
+    let(:title) {'Edit the forum'}
+    let(:heading) {'Edit the forum'}
+    
+    describe "should have a correct form" do
+      let(:form_name) {forum.name}
+      let(:form_description) {forum.description}
+      let(:form_submit_button) {'Edit'}
       
+      it_should_behave_like 'forum pages with a form'
     end
     
     it_should_behave_like 'all forum pages'
