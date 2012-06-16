@@ -1,12 +1,19 @@
+<% provide(:title, 'Create a forum') %>
+
 <h1>Create a forum</h1>
-<%= form_for(@forum) do |f| %>
-  <!-- render 'shared/error_messages_forum' -->
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@forum) do |f| %>
+      <!-- render 'shared/error_messages_forum' -->
 
-  <%= f.label :description %>
-  <%= f.text_area :description %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
 
-  <%= f.submit "Create a forum", class: "btn btn-large btn-primary" %>
-<% end %>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+
+      <%= f.submit "Create a forum", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
