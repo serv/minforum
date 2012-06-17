@@ -4,7 +4,7 @@ describe "Forums" do
   
   subject { page }
   
-  shared_examples_for "all forum pages" do
+  shared_examples_for "all pages" do
     describe "should have logo" do
       it { should have_selector('div.navbar-inner div.container a', text:'Minforum') }
     end
@@ -17,7 +17,7 @@ describe "Forums" do
     end
     
     describe "should have correct title" do
-      it { should have_selector('title', text: forum_title(title)) }
+      it { should have_selector('title', text: full_title(title)) }
     end
     
     describe "should have correct heading" do
@@ -60,7 +60,7 @@ describe "Forums" do
       it { should have_link('New Forum', href: new_forum_path) }
     end
     
-    it_should_behave_like 'all forum pages'
+    it_should_behave_like 'all pages'
   end
   
   describe "New forum page" do
@@ -77,7 +77,26 @@ describe "Forums" do
       it_should_behave_like 'forum pages with a form'
     end
     
-    it_should_behave_like 'all forum pages'
+    describe "with valid information" do
+      before do
+        fill_in 'Name', with: 'Example Forum'
+        fill_in 'Description', with: 'A few reminders'
+      end
+      
+      it "should be able to create a new forum" do
+        expect do
+          click_button 'Create a forum'
+        end.to change(Forum, :count).by(1)
+      end
+      
+      describe "after saving the forum" do
+        before { click_button "Create a forum" }
+        let(:forum) { Forum.find_by_name('Example Forum') }
+        it { should have_selector('title', text: full_title(forum.name)) }
+      end
+    end
+    
+    it_should_behave_like 'all pages'
   end
   
   describe "Edit forum page" do
@@ -95,7 +114,21 @@ describe "Forums" do
       it_should_behave_like 'forum pages with a form'
     end
     
-    it_should_behave_like 'all forum pages'
+    describe "with valid information" do
+      let(:new_name) { 'New example name' }
+      let(:new_description) { 'A few reminders' }
+      before do
+        fill_in 'Name', with: new_name
+        fill_in 'Description', with: new_description
+        click_button 'Edit'
+      end
+      
+      it { should have_selector('title', text: full_title('')) }
+      specify { forum.reload.name.should == new_name }
+      specify { forum.reload.description.should == new_description }
+    end
+    
+    it_should_behave_like 'all pages'
   end
-
+  # still need to write delete forum function
 end
