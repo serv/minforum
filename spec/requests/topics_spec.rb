@@ -64,5 +64,22 @@ describe 'Topics' do
     it_should_behave_like 'all pages'
   end
   
+  describe 'Edit topic page' do
+    
+    let(:topic) { FactoryGirl.create(:topic) }
+    before { visit edit_forum_topic_path(forum, topic) }
+    let(:title) {'Edit the topic'}
+    let(:heading) {'Edit the topic'}
+    
+    # describe "should have a correct form" do
+    #   let(:form_name) {topic.name}
+    #   let(:form_content) {topic.posts.first.content}
+    #   let(:form_submit_button) {'Edit'}
+    #   
+    #   it_should_behave_like 'topic pages with a form'
+    # end
+    
+    it_should_behave_like 'all pages'
+  end
   
 end
