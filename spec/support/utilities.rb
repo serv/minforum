@@ -8,7 +8,7 @@ def full_title(page_title)
 end
 
 def form_name_content(form_name)
-  form_name == '' ? '' : ""
+  form_name == '' ? '' : "[value='#{form_name}']"
 end
 
 def form_button_content(form_button)
