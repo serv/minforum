@@ -5,12 +5,12 @@ describe 'Topics' do
   shared_examples_for "topic pages with a form" do
     describe "should have correct labels" do
       it { should have_selector('label', text: 'Name') }
-      it { should have_selector('label', text: 'Content') }
+      # it { should have_selector('label', text: 'Content') }
     end
     
     describe "should have correct inputs" do
       it { should have_selector("input[id='topic_name'][name='topic[name]']#{form_name_content(form_name)}") }
-      it { should have_selector("textarea[id='topic_posts_attributes_0_content'][name='topic\[posts_attributes\]\[0\]\[content\]']", text: form_content) }
+      # it { should have_selector("textarea[id='topic_posts_attributes_0_content'][name='topic\[posts_attributes\]\[0\]\[content\]']", text: form_content) }
     end
   
     describe "should have correct input button" do
@@ -61,6 +61,26 @@ describe 'Topics' do
       it_should_behave_like 'topic pages with a form'
     end    
     
+    describe "with valid information" do
+      before do
+        fill_in 'Name', with: 'Example Topic'
+        fill_in 'Content', with: 'A few reminders'
+      end
+      
+      it "should be able to create a new topic" do
+        expect do
+          click_button 'Create a topic'
+        end.to change(Topic, :count).by(1)
+      end
+      
+      describe "after saving the topic" do
+        before { click_button "Create a topic" }
+        let(:topic) { Topic.find_by_name('Example Topic') }
+        let(:title_temp) { topic.name + ' | ' + forum.name }
+        it { should have_selector('title', text: full_title(title_temp)) }
+      end
+    end
+    
     it_should_behave_like 'all pages'
   end
   
@@ -71,15 +91,16 @@ describe 'Topics' do
     let(:title) {'Edit the topic'}
     let(:heading) {'Edit the topic'}
     
-    # describe "should have a correct form" do
-    #   let(:form_name) {topic.name}
-    #   let(:form_content) {topic.posts.first.content}
-    #   let(:form_submit_button) {'Edit'}
-    #   
-    #   it_should_behave_like 'topic pages with a form'
-    # end
+    describe "should have a correct form" do
+      let(:form_name) {topic.name}
+      let(:form_submit_button) {'Edit'}
+      
+      it_should_behave_like 'topic pages with a form'
+    end
     
     it_should_behave_like 'all pages'
   end
+  
+  
   
 end

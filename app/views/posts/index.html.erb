@@ -1,3 +1,6 @@
+<% title_temp = @topic.name + ' | ' + @forum.name %>
+<% provide(:title, title_temp) %>
+
 <div class="row" id="semi-header">
   <div class="span10">
     <h1><%= @topic.name %> </h1><%= link_to 'Forums', root_path %> > <%= link_to @forum.name, forum_topics_path(@forum) %>
