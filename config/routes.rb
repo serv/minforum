@@ -1,7 +1,7 @@
 Minforum::Application.routes.draw do
-  get "users/new"
-  
   root :to => "forums#index"
+
+  resources :users
   resources :forums do
     resources :topics
   end

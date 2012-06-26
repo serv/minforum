@@ -10,4 +10,11 @@ FactoryGirl.define do
     forum_id 1
     last_post_id 10
   end
+  
+  factory :user do
+    name     "Michael Hartl"
+    email    "michael@example.com"
+    password "foobar"
+    password_confirmation "foobar"
+  end  
 end
