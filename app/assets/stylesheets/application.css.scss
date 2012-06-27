@@ -119,3 +119,33 @@ aside {
     }
   }
 }
+
+/* forums */
+
+.forums {
+  list-style: none;
+  margin: 10px 0 0 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+.forums_on_user_profile {
+  display: block;
+}
+.forum_description {
+  display: block;
+}
+.timestamp {
+  color: $grayLight;
+}
+.forum_setting {
+  color: $grayLight;
+}
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}

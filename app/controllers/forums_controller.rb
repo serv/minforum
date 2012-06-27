@@ -1,12 +1,14 @@
 class ForumsController < ApplicationController
+  before_filter :signed_in_user, only: [:new, :create, :edit, :update, :destroy]
+  
   def new
     @forum = Forum.new
   end
   
   def create
-    @forum = Forum.new(params[:forum])
+    @forum = current_user.forums.build(params[:forum])
     if @forum.save
-      flash[:success] = "Success!"
+      flash[:success] = "Forum created!"
       redirect_to forum_topics_path(@forum)
     else
       render 'new'

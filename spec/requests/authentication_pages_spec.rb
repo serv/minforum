@@ -83,6 +83,19 @@ describe "Authentication" do
           end
         end
       end
+      
+      describe "in the Forums controller" do
+
+        describe "submitting to the create action" do
+          before { post forums_path }
+          specify { response.should redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete forum_path(FactoryGirl.create(:forum)) }
+          specify { response.should redirect_to(signin_path) }
+        end
+      end
     end
     
     describe "as non-admin user" do

@@ -20,5 +20,12 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
+    
+    users = User.all(limit: 5)
+    2.times do
+      name = "Random #{rand(1000)}"
+      description = Faker::Lorem.sentence(5)
+      users.each { |user| user.forums.create!(name: name, description: description) }
+    end
   end
 end

@@ -7,4 +7,13 @@
       </h1>
     </section>
   </aside>
+  <div class="span8">
+    <% if @user.forums.any? %>
+      <h3>Forums (<%= @user.forums.count %>)</h3>
+      <ol class="forums">
+        <%= render @forums %>
+      </ol>
+      <%= will_paginate @forums %>
+    <% end %>
+  </div>
 </div>
