@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     @topic.views += 1
     if @topic.save
       @forum = Forum.find_by_id(@topic.forum_id)
-      @posts = @topic.posts.all
+      @posts = @topic.posts.paginate(page: params[:page])
     else
       render 'index'
     end
