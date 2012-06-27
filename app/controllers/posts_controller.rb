@@ -38,7 +38,8 @@ class PostsController < ApplicationController
     if @post.update_attributes(params[:post])
       topic = Topic.find(@post.topic_id)
       flash[:success] = "Success!"
-      redirect_to topic_posts_path(topic)
+      redirect_to topic_posts_path(topic) 
+      # TODO: need to redirect to right post page
     else
       render 'edit'
     end

@@ -15,7 +15,8 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:admin) }
-  it { should respond_to(:authenticate) }  
+  it { should respond_to(:authenticate) } 
+  it { should respond_to(:forums) }
   
   it { should be_valid }
   it { should_not be_admin }
@@ -142,6 +143,30 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+  
+  describe "forum association" do
+    before { @user.save }
+    
+    # not really used
+    let!(:older_forum) do 
+      FactoryGirl.create(:forum, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_forum) do
+      FactoryGirl.create(:forum, user: @user, created_at: 1.hour.ago)
+    end
+    
+    # it "should have the right forums in the right order" do
+    #   @user.forums.should == [newer_forum, older_forum]
+    # end
+    
+    it "should destroy associated forums" do
+      forums = @user.forums
+      @user.destroy
+      forums.each do |forum|
+        Forum.find_by_id(forum.id).should be_nil
+      end
+    end
   end
 end
 

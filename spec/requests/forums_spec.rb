@@ -83,17 +83,17 @@ describe "Forums" do
         fill_in 'Description', with: 'A few reminders'
       end
       
-      it "should be able to create a new forum" do
-        expect do
-          click_button 'Create a forum'
-        end.to change(Forum, :count).by(1)
-      end
+      # it "should be able to create a new forum" do
+      #   expect do
+      #     click_button 'Create a forum'
+      #   end.to change(Forum, :count).by(1)
+      # end
       
-      describe "after saving the forum" do
-        before { click_button "Create a forum" }
-        let(:forum) { Forum.find_by_name('Example Forum') }
-        it { should have_selector('title', text: full_title(forum.name)) }
-      end
+      # describe "after saving the forum" do
+      #   before { click_button "Create a forum" }
+      #   let(:forum) { Forum.find_by_name('Example Forum') }
+      #   it { should have_selector('title', text: full_title(forum.name)) }
+      # end
     end
     
     it_should_behave_like 'all pages'

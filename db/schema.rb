@@ -11,13 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626203014) do
+ActiveRecord::Schema.define(:version => 20120627044846) do
 
   create_table "forums", :force => true do |t|
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "name"
     t.text     "description"
+    t.integer  "user_id"
   end
 
   create_table "posts", :force => true do |t|
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20120626203014) do
     t.datetime "updated_at", :null => false
     t.integer  "topic_id"
     t.text     "content"
+    t.integer  "user_id"
   end
 
   create_table "topics", :force => true do |t|
@@ -34,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20120626203014) do
     t.string   "name"
     t.integer  "last_post_id"
     t.integer  "views"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
