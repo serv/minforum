@@ -22,7 +22,7 @@ class PostsController < ApplicationController
       @topic.last_post_id = @post.id
       @topic.save
       flash[:success] = "Success!"
-      redirect_to topic_posts_path(@topic)
+      redirect_to topic_posts_path(@topic, :page => "#{last_page(@topic.posts.count)}")
     else
       render 'new'
     end
@@ -50,5 +50,15 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to topic_posts_path(@topic)
   end
+
+  private
+    
+    def last_page(count)
+      if count % 25 > 0
+        count/25 + 1
+      else
+        count/25
+      end     
+    end
 
 end
