@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_filter :signed_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
+  
   def index
     @topic = Topic.find(params[:topic_id])
     @topic.views += 1

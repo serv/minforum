@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  before_filter :signed_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
+  
   def index
     @forum = Forum.find(params[:forum_id])
     @topics = @forum.topics.includes(:posts).order('posts.updated_at DESC').paginate(page: params[:page])
