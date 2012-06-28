@@ -18,6 +18,8 @@ class PostsController < ApplicationController
   def create
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.build(params[:post])
+    @post.user_id = current_user.id
+
     if @post.save
       @topic.last_post_id = @post.id
       @topic.save
