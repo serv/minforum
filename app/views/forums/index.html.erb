@@ -15,13 +15,16 @@
         <th>Topics</th>
         <th>Posts</th>
         <th>Views</th>
-        <th>Settings</th>
       </tr>
     </thead>
     <% @forums.each do |forum| %>
       <tr>
         <td>
-          <%= link_to forum.name, forum_topics_path(forum) %> </br> <%= forum.description %>
+          <%= link_to forum.name, forum_topics_path(forum) %> </br> <%= forum.description %><% if current_user?(forum.user) %>
+    <span class="forum_setting">
+      <%= link_to "Edit", edit_forum_path(forum) %> <%= link_to 'Delete', forum, confirm: 'Are you sure?', method: :delete %>
+    <span>
+    <% end %>
         </td>
         <td>
           <%= forum.topics.count %>
@@ -31,9 +34,6 @@
         </td>
         <td>
           <%= total_views forum %>
-        </td>
-        <td>
-          <%= link_to 'Edit', edit_forum_path(forum) %> <%= link_to 'Delete', forum, confirm: 'Are you sure?', method: :delete %>
         </td>
       </tr>
     <% end %>
