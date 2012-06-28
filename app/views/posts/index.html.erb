@@ -18,19 +18,35 @@
         <th>Posts</th>
         <th>Users</th>
         <th>Posted at</th>
-        <th>Options</th>
+        <% if current_user.admin == true %>
+          <th>Settings</th>
+        <% end %>
       </tr>
     </thead>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.content %></td>
+        <td><%= post.content %>
+        <% if post.user_id == current_user.id %>
+          <p>
+            <% if post == @topic.posts.first %>
+              <%= link_to 'Edit', edit_topic_path(@topic) %>
+              <%= link_to 'Delete topic', @topic, confirm: 'Are you sure?', method: :delete %>
+            <% else %>
+              <%= link_to 'Edit', edit_topic_post_path(@topic, post) %> 
+              <%= link_to 'Delete', [@topic, post], confirm: 'Are you sure?', method: :delete %>
+            <% end %>
+          </p>
+        <% end %>
+        </td>
         <td>Username_placeholder</td>
         <td><%= post.created_at %></td>
-        <% if post == @topic.posts.first %>
-          <td><%= link_to 'Edit', edit_topic_path(@topic) %></td>
-        <% else %>
-          <td><%= link_to 'Edit', edit_topic_post_path(@topic, post) %> 
-          <%= link_to 'Delete', [@topic, post], confirm: 'Are you sure?', method: :delete %></td>
+        <% if current_user.admin == true %>
+          <% if post == @topic.posts.first %>
+            <td><%= link_to 'Edit', edit_topic_path(@topic) %></td>
+          <% else %>
+            <td><%= link_to 'Edit', edit_topic_post_path(@topic, post) %> 
+            <%= link_to 'Delete', [@topic, post], confirm: 'Are you sure?', method: :delete %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

@@ -19,7 +19,9 @@
         <th>Last Post</th>
         <th>Replies</th>
         <th>Views</th>
-        <th>Settings</th>
+        <% if current_user.admin == true %>
+          <th>Settings</th>
+        <% end %>
       </tr>
     </thead>
     <% @topics.each do |topic| %>
@@ -28,8 +30,10 @@
         <td>Username_placeholder at </br><%= topic.posts.last.created_at %></td>
         <td><%= topic.posts.count-1 %></td>
         <td><%= topic.views %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %> 
-        <%= link_to 'Delete', topic, confirm: 'Are you sure?', method: :delete %></td>
+        <% if current_user.admin == true %>
+          <td><%= link_to 'Edit', edit_topic_path(topic) %> 
+          <%= link_to 'Delete', topic, confirm: 'Are you sure?', method: :delete %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
