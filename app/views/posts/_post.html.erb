@@ -1,0 +1,14 @@
+<li>
+  <div class="on_user_profile">
+    <span class="feed_body"><%= post.content %></span>
+    <span class="timestamp">
+      Created <%= time_ago_in_words(post.created_at) %> ago.
+    </span>
+    <% if current_user?(post.user) %>
+    <span class="feed_setting">
+      <% topic = Topic.find_by_id(post.topic_id) %>
+      <%= link_to "Edit", edit_topic_post_path(topic, post) %> <%= link_to 'Delete', [topic, post], confirm: 'Are you sure?', method: :delete %></td> 
+    <span>
+    <% end %>
+  </div>
+</li>

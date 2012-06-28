@@ -8,6 +8,20 @@
     </section>
   </aside>
   <div class="span8">
+    <% if @user.posts.any? %>
+      <h3>Posts (<%= @user.posts.count %>)</h3>
+      <ol class="posts">
+        <%= render @posts %>
+      </ol>
+      <%= will_paginate @posts %>
+    <% end %>
+    <% if @user.topics.any? %>
+      <h3>Topics (<%= @user.topics.count %>)</h3>
+      <ol class="topics">
+        <%= render @topics %>
+      </ol>
+      <%= will_paginate @topics %>
+    <% end %>
     <% if @user.forums.any? %>
       <h3>Forums (<%= @user.forums.count %>)</h3>
       <ol class="forums">

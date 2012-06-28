@@ -1,14 +1,13 @@
 <li>
-  <div class="forums_on_user_profile">
-    <span class="forum_description"><%= link_to forum.name, forum_topics_path(forum) %>: <%= forum.description %></span>
+  <div class="on_user_profile">
+    <span class="feed_body"><%= link_to forum.name, forum_topics_path(forum) %>: <%= forum.description %></span>
     <span class="timestamp">
       Created <%= time_ago_in_words(forum.created_at) %> ago.
     </span>
     <% if current_user?(forum.user) %>
-    <span class="forum_setting">
+    <span class="feed_setting">
       <%= link_to "Edit", edit_forum_path(forum) %> <%= link_to 'Delete', forum, confirm: 'Are you sure?', method: :delete %>
     <span>
     <% end %>
   </div>
-  
 </li>
