@@ -3,7 +3,9 @@
     <h1>Forums</h1>
   </div>
   <div class="span2">
-    <%= link_to "New Forum", new_forum_path, html_options = {:class => "btn btn-large btn-primary"} %>
+    <% if admin? %>
+      <%= link_to "New Forum", new_forum_path, html_options = {:class => "btn btn-large btn-primary"} %>
+    <% end %>
   </div>
 </div>
 
@@ -20,11 +22,14 @@
     <% @forums.each do |forum| %>
       <tr>
         <td>
-          <%= link_to forum.name, forum_topics_path(forum) %> </br> <%= forum.description %><% if current_user?(forum.user) %>
-    <span class="forum_setting">
-      <%= link_to "Edit", edit_forum_path(forum) %> <%= link_to 'Delete', forum, confirm: 'Are you sure?', method: :delete %>
-    <span>
-    <% end %>
+          <%= link_to forum.name, forum_topics_path(forum) %></br>
+          <%= forum.description %>
+          <% if admin? %>
+            <span class="forum_setting">
+              <%= link_to "Edit", edit_forum_path(forum) %>
+              <%= link_to 'Delete', forum, confirm: 'Are you sure?', method: :delete %>
+            <span>
+          <% end %>
         </td>
         <td>
           <%= forum.topics.count %>

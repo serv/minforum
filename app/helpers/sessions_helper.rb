@@ -41,4 +41,15 @@ module SessionsHelper
   def store_location
     session[:return_to] = request.fullpath
   end
+  
+  # admin
+  def admin?
+    current_user != nil ? current_user.admin : false
+  end
+  
+  def admin_user
+    unless admin?
+      redirect_to root_path, notice: "You do not have permission to do that."
+    end
+  end
 end
