@@ -17,6 +17,9 @@
         <th>Topics</th>
         <th>Posts</th>
         <th>Views</th>
+        <% if admin? %>
+          <th>Setting</th>
+        <% end %>
       </tr>
     </thead>
     <% @forums.each do |forum| %>
@@ -24,12 +27,6 @@
         <td>
           <%= link_to forum.name, forum_topics_path(forum) %></br>
           <%= forum.description %>
-          <% if admin? %>
-            <span class="forum_setting">
-              <%= link_to "Edit", edit_forum_path(forum) %>
-              <%= link_to 'Delete', forum, confirm: 'Are you sure?', method: :delete %>
-            <span>
-          <% end %>
         </td>
         <td>
           <%= forum.topics.count %>
@@ -40,6 +37,14 @@
         <td>
           <%= total_views forum %>
         </td>
+        <% if admin? %>
+          <td>
+            <span class="forum_setting">
+              <%= link_to "Edit", edit_forum_path(forum) %>
+              <%= link_to 'Delete', forum, confirm: 'Are you sure?', method: :delete %>
+            <span>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
