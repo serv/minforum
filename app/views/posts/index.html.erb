@@ -41,7 +41,7 @@
         <td>
           <%= link_to post_creator_name(post), user_path(post_creator(post)) %>
         </td>
-        <td><%= post.created_at %></td>
+        <td><%= time_ago_in_words(post.created_at) %></td>
         <% if current_user.admin == true %>
           <% if post == @topic.posts.first %>
             <td><%= link_to 'Edit', edit_topic_path(@topic) %></td>
