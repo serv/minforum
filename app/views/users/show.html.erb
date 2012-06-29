@@ -2,13 +2,19 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1>
-        <%= @user.name %>
-        <!-- TODO: admin placeholder -->
         <% if @user.admin == true %>
-          
+          <h1 class="admin-name">
+            <%= @user.name %>
+          </h1>
+        <% elsif @user.mod == true %>
+          <h1 class="mod-name">
+            <%= @user.name %>
+          </h1>
+        <% else %>
+          <h1>
+            <%= @user.name %>
+          </h1>
         <% end %>
-      </h1>
       <p>
         <%= time_ago_in_words(@user.created_at) %> old
       </p>

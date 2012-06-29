@@ -11,5 +11,3 @@ Long term goals
 - Multiple themes
 - Forum categorization
 - Administrator panel
-
-<!-- todo: username placeholders must chnage -->
