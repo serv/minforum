@@ -4,6 +4,10 @@
     <section>
       <h1>
         <%= @user.name %>
+        <!-- TODO: admin placeholder -->
+        <% if @user.admin == true %>
+          
+        <% end %>
       </h1>
       <p>
         <%= time_ago_in_words(@user.created_at) %> old
