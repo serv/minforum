@@ -6,6 +6,9 @@
         <%= @user.name %>
       </h1>
       <p>
+        <%= time_ago_in_words(@user.created_at) %> old
+      </p>
+      <p>
         <%= @user.bio %>
       </p>
     </section>
