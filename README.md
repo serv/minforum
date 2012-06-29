@@ -5,8 +5,8 @@ Minforum is a minimal forum software written in Ruby on Rails
 
 Currently working on ...
 - Test coverage for core features
-- User registration
-- User authentication for permission to create topics and posts
+- Forum categorization
+- User profile
 
 Long term goals
 - Multiple themes
