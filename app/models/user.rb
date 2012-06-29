@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation, :bio
   has_secure_password
   has_many :forums, dependent: :destroy
   has_many :topics, dependent: :destroy
@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, 
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+                    
+  validates :bio, length: { maximum: 1000 }
 
   validates :password, presence: true, length: { minimum: 5 }
   validates :password_confirmation, presence: true
