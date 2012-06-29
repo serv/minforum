@@ -26,8 +26,14 @@
     </thead>
     <% @topics.each do |topic| %>
       <tr>
-        <td><%= link_to topic.name, topic_posts_path(topic) %> </br> Username_placeholder</td>
-        <td>Username_placeholder at </br><%= topic.posts.last.created_at %></td>
+        <td>
+          <%= link_to topic.name, topic_posts_path(topic) %></br>
+          by <%= link_to topic_creator_name(topic), user_path(topic_creator(topic)) %>
+        </td>
+        <td>
+          by <%= link_to last_post_creator_name(topic), user_path(last_post_creator(topic)) %> at</br>
+          <%= time_ago_in_words(last_post(topic).created_at) %>
+        </td>
         <td><%= topic.posts.count-1 %></td>
         <td><%= topic.views %></td>
         <% if current_user.admin == true %>
