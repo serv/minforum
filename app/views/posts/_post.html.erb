@@ -1,6 +1,6 @@
 <li>
   <div class="on_user_profile">
-    <span class="feed_body"><%= post.content %></span>
+    <span class="feed_body"><%= simple_format(post.content) %></span>
     <span class="timestamp">
       Created <%= time_ago_in_words(post.created_at) %> ago.
     </span>

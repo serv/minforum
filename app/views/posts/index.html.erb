@@ -25,7 +25,7 @@
     </thead>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.content %>
+        <td><%= simple_format(post.content) %>
         <% if post.user_id == current_user.id %>
           <p>
             <% if post == @topic.posts.first %>
