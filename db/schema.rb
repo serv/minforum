@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120629232408) do
+ActiveRecord::Schema.define(:version => 20120630184719) do
 
   create_table "forums", :force => true do |t|
     t.datetime "created_at",  :null => false
@@ -30,13 +30,14 @@ ActiveRecord::Schema.define(:version => 20120629232408) do
   end
 
   create_table "topics", :force => true do |t|
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "forum_id"
     t.string   "name"
     t.integer  "last_post_id"
     t.integer  "views"
     t.integer  "user_id"
+    t.boolean  "closed",       :default => false
   end
 
   create_table "users", :force => true do |t|
