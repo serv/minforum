@@ -27,7 +27,12 @@
     <% @topics.each do |topic| %>
       <tr>
         <td>
-          <%= link_to topic.name, topic_posts_path(topic) %></br>
+          <% if !topic.closed? %>
+            <%= link_to topic.name, topic_posts_path(topic) %> 
+          <% else %>
+            <strike><%= topic.name %></strike>
+          <%end%>
+          </br>
           by <%= link_to topic_creator_name(topic), user_path(topic_creator(topic)) %>
         </td>
         <td>
