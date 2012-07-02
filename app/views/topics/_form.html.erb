@@ -1,6 +1,5 @@
 <%= f.label :name %>
 <%= f.text_field :name %>
 
-<%= f.fields_for :posts do |post| %>
-  <%= render :partial => "posts/form", :locals => {:f => post} %>
-<% end %>
+<%= f.label :content %>
+<%= f.text_area :content %>

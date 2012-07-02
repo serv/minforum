@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630184719) do
+ActiveRecord::Schema.define(:version => 20120701225016) do
 
   create_table "forums", :force => true do |t|
     t.datetime "created_at",  :null => false
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20120630184719) do
     t.integer  "views"
     t.integer  "user_id"
     t.boolean  "closed",       :default => false
+    t.text     "content"
   end
 
   create_table "users", :force => true do |t|

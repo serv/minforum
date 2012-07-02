@@ -18,5 +18,6 @@ module TopicsHelper
   def last_post_creator_name(topic)
     last_post_creator(topic).name
   end
+
   
 end

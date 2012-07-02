@@ -31,19 +31,20 @@
         <% end %>
       </tr>
     </thead>
+      <tr>
+        <td><%= simple_format(@topic.content) %></td>
+        <td><%= link_to topic_creator_name(@topic), user_path(topic_creator(@topic)) %></td>
+        <td><%= time_ago_in_words(@topic.created_at) %></td>
+        <td><%= link_to 'Edit', edit_topic_path(@topic) %>
+        <%= link_to 'Delete topic', @topic, confirm: 'Are you sure?', method: :delete %>
+        </td>
+      </tr>
     <% @posts.each do |post| %>
       <tr>
         <td><%= simple_format(post.content) %>
         <% if post.user_id == current_user.id %>
-          <p>
-            <% if post == @topic.posts.first %>
-              <%= link_to 'Edit', edit_topic_path(@topic) %>
-              <%= link_to 'Delete topic', @topic, confirm: 'Are you sure?', method: :delete %>
-            <% else %>
-              <%= link_to 'Edit', edit_topic_post_path(@topic, post) %> 
-              <%= link_to 'Delete', [@topic, post], confirm: 'Are you sure?', method: :delete %>
-            <% end %>
-          </p>
+          <%= link_to 'Edit', edit_topic_post_path(@topic, post) %> 
+          <%= link_to 'Delete', [@topic, post], confirm: 'Are you sure?', method: :delete %>
         <% end %>
         </td>
         <td>
@@ -51,12 +52,8 @@
         </td>
         <td><%= time_ago_in_words(post.created_at) %></td>
         <% if current_user.admin == true %>
-          <% if post == @topic.posts.first %>
-            <td><%= link_to 'Edit', edit_topic_path(@topic) %></td>
-          <% else %>
             <td><%= link_to 'Edit', edit_topic_post_path(@topic, post) %> 
             <%= link_to 'Delete', [@topic, post], confirm: 'Are you sure?', method: :delete %></td>
-          <% end %>
         <% end %>
       </tr>
     <% end %>

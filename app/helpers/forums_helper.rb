@@ -12,7 +12,7 @@ module ForumsHelper
     forum.topics.all.each do |topic|
       posts_count += topic.posts.count
     end
-    posts_count -= forum.topics.count
+    posts_count
   end
   
   def forum_title(page_title)

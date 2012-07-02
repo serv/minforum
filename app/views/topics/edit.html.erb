@@ -5,16 +5,10 @@
 <div class="row">
   <div class="span6 offset3">
     <%= form_for @topic do |f| %>
-      <!-- render 'shared/error_messages_topic' -->
+      <%= render 'shared/error_messages', object: f.object %>
       
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= render 'form', :f => f %>
       
-      <%= f.fields_for :posts, @topic.posts.first do |post| %>
-        <%= render :partial => "posts/form", :locals => {:f => post} %>
-      <% end %>
-
-
       <%= f.submit "Edit", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>

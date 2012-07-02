@@ -9,15 +9,12 @@ class TopicsController < ApplicationController
   def new
     @forum = Forum.find(params[:forum_id])
     @topic = @forum.topics.build
-    @topic.posts.build(params[:user => current_user.id])
   end
   
   def create
     @forum = Forum.find(params[:forum_id])
     @topic = @forum.topics.build(params[:topic])
     @topic.user_id = current_user.id
-    @topic.posts.first.user_id = current_user.id
-    
     if @topic.save
       flash[:success] = "Success!"
       redirect_to topic_posts_path(@topic)
@@ -47,4 +44,5 @@ class TopicsController < ApplicationController
     flash[:success] = "Topic deleted"
     redirect_to forum_topics_path(forum_id)
   end
+  
 end
