@@ -1,5 +1,6 @@
 class Topic < ActiveRecord::Base
   has_many :posts, :dependent => :destroy
+  has_many :flagtopics, :dependent => :destroy
   belongs_to :forum
   belongs_to :user
   accepts_nested_attributes_for :posts, :allow_destroy => true
@@ -11,7 +12,7 @@ class Topic < ActiveRecord::Base
   validates :user_id, presence: true
   validates :forum_id, presence: true
   validates :content, presence: true, length: { maximum: 50000 }
-  
+
   def init
     self.views ||= 0
     self.last_post_id ||= Post.count + 1

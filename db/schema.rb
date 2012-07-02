@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120701225016) do
+ActiveRecord::Schema.define(:version => 20120702075057) do
+
+  create_table "flags", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "topic_id"
+  end
+
+  create_table "flagtopics", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.boolean  "read",       :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.text     "content"
+  end
 
   create_table "forums", :force => true do |t|
     t.datetime "created_at",  :null => false

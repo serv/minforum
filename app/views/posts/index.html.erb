@@ -32,7 +32,11 @@
       </tr>
     </thead>
       <tr>
-        <td><%= simple_format(@topic.content) %></td>
+        <td><%= simple_format(@topic.content) %></br>
+          <%= link_to 'Edit', edit_topic_path(@topic) %>
+          <%= link_to 'Delete topic', @topic, confirm: 'Are you sure?', method: :delete %>
+          <%= link_to 'Report', new_topic_flagtopic_path %>
+        </td>
         <td><%= link_to topic_creator_name(@topic), user_path(topic_creator(@topic)) %></td>
         <td><%= time_ago_in_words(@topic.created_at) %></td>
         <td><%= link_to 'Edit', edit_topic_path(@topic) %>

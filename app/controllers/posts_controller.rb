@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :signed_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
-  
+
   def index
     @topic = Topic.find(params[:topic_id])
     @topic.views += 1
@@ -11,12 +11,12 @@ class PostsController < ApplicationController
       render 'index'
     end
   end
-  
+
   def new
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.build
   end
-  
+
   def create
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.build(params[:post])
@@ -31,24 +31,24 @@ class PostsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def edit
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:id])
   end
-  
+
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
       topic = Topic.find(@post.topic_id)
       flash[:success] = "Success!"
-      redirect_to topic_posts_path(topic) 
+      redirect_to topic_posts_path(topic)
       # TODO: need to redirect to right post page
     else
       render 'edit'
     end
   end
-  
+
   def destroy
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
@@ -57,13 +57,13 @@ class PostsController < ApplicationController
   end
 
   private
-    
+
     def last_page(count)
       if count % 25 > 0
         count/25 + 1
       else
         count/25
-      end     
+      end
     end
 
 end

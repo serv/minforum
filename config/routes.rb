@@ -8,6 +8,7 @@ Minforum::Application.routes.draw do
   end
   resources :topics do 
     resources :posts
+    resources :flagtopics
   end
   
   match '/signup',  to: 'users#new'
