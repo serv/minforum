@@ -18,4 +18,9 @@ module TopicsHelper
   def last_post_creator_name(topic)
     last_post_creator(topic).name
   end
+  
+  def reported?(topic)
+    flagtopic = Flagtopic.where("topic_id = ? AND user_id = ?", topic.id, current_user.id)
+    flagtopic.count > 0
+  end
 end
