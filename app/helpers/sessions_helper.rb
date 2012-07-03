@@ -4,7 +4,7 @@ module SessionsHelper
     cookies.permanent[:remember_token] = user.remember_token
     self.current_user = user
   end
-  
+
   def signed_in?
     !current_user.nil?
   end
@@ -27,12 +27,12 @@ module SessionsHelper
       redirect_to signin_path, notice: "Please sign in."
     end
   end
-  
+
   def sign_out
     self.current_user = nil
     cookies.delete(:remember_token)
   end
-  
+
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
     session.delete(:return_to)
@@ -41,23 +41,23 @@ module SessionsHelper
   def store_location
     session[:return_to] = request.fullpath
   end
-  
+
   # admin
   def admin?
     current_user != nil ? current_user.admin : false
   end
-  
+
   def admin_user
     unless admin?
       redirect_to root_path, notice: "You do not have permission to do that."
     end
   end
-  
+
   # mod
   def mod?
     current_user != nil ? current_user.mod : false
   end
-  
+
   def mod_user
     unless mod?
       redirect_to root_path, notice: "You do not have permission to do that."
