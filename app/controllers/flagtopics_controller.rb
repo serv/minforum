@@ -1,8 +1,7 @@
 class FlagtopicsController < ApplicationController
   include SessionsHelper
 
-  before_filter :admin_user,     only: [:edit, :update, :index]
-  # before_filter :mod_user,       only: [:edit, :update, :index]
+  before_filter :admin_or_mod_user, only: [:edit, :update, :index]
 
   def new
     @topic = Topic.find(params[:topic_id])

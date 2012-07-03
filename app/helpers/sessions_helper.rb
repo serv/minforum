@@ -63,4 +63,10 @@ module SessionsHelper
       redirect_to root_path, notice: "You do not have permission to do that."
     end
   end
+
+  def admin_or_mod_user
+    unless admin? || mod?
+      redirect_to root_path, notice: "You do not have permission to do that."
+    end
+  end
 end
