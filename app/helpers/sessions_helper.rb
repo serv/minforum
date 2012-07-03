@@ -52,4 +52,15 @@ module SessionsHelper
       redirect_to root_path, notice: "You do not have permission to do that."
     end
   end
+  
+  # mod
+  def mod?
+    current_user != nil ? current_user.mod : false
+  end
+  
+  def mod_user
+    unless mod?
+      redirect_to root_path, notice: "You do not have permission to do that."
+    end
+  end
 end

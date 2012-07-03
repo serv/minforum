@@ -1,0 +1,28 @@
+<div class="row" id="semi-header">
+  <div class="span10">
+    <h1></h1>
+  </div>
+  <div class="span2">
+  </div>
+</div>
+
+<table class="table">
+  <tbody>
+    <thead>
+      <tr>
+        <th>Flagged Topics</th>
+        <th>Flagged by</th>
+        <% if current_user.admin == true %>
+          <th>Settings</th>
+        <% end %>
+      </tr>
+    </thead>
+    <% @flagtopics.each do |flagtopic| %>
+    <tr>
+      <td><%= link_to flag_topic_name(flagtopic), topic_posts_path(flag_topic(flagtopic)) %></td>
+      <td><%= link_to flag_user_name(flagtopic), user_path(flag_user(flagtopic)) %> at <%= time_ago_in_words(flagtopic.created_at) %></td>
+      <td><%= link_to 'close', edit_topic_flagtopic_path(flag_topic(flagtopic), flagtopic) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
