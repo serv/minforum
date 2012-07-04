@@ -1,4 +1,6 @@
 class FlagpostsController < ApplicationController
+  include SessionsHelper
+
   before_filter :admin_or_mod_user, only: [:edit, :update, :index]
 
   def new
@@ -20,19 +22,23 @@ class FlagpostsController < ApplicationController
   end
 
   def index
-
-  end
-
-  def show
-
+    @flagposts = Flagpost.where(:read => false)
   end
 
   def edit
-
+    @post = Post.find(params[:post_id])
+    @flagpost = @post.flagposts.find(params[:id])
   end
 
   def update
-
+    @flagpost = Flagpost.find(params[:id])
+    post = Post.find(@flagpost.post_id)
+    if @flagpost.update_attributes(params[:flagpost])
+      flash[:success] = "Success!"
+      redirect_to post_flagposts_path
+    else
+      redirect_to edit_post_flagpost_path(post, @flagpost)
+    end
   end
 
 end
