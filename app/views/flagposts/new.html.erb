@@ -1,0 +1,16 @@
+<% provide(:title, "Report #{@post.content}") %>
+
+<h1>Please tell us why you are reporting this post.</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for [@post, @flagpost] do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+
+      <%= f.submit "Report", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

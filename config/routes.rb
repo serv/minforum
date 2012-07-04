@@ -10,6 +10,9 @@ Minforum::Application.routes.draw do
     resources :posts
     resources :flagtopics
   end
+  resources :posts do
+    resources :flagposts
+  end
   
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'

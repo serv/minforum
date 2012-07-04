@@ -6,4 +6,9 @@ module PostsHelper
   def post_creator_name(post)
     post_creator(post).name
   end
+  
+  def reported_post?(post)
+    flagpost = Flagpost.where("post_id = ? AND user_id = ?", post.id, current_user.id)
+    flagpost.count > 0
+  end  
 end

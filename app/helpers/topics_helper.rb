@@ -8,7 +8,11 @@ module TopicsHelper
   end
 
   def last_post(topic)
-    Post.find_by_id(topic.last_post_id)
+    if topic.posts.count < 1 # if the topic doesn't have any posts
+      topic
+    else
+      Post.find_by_id(topic.last_post_id)
+    end
   end
 
   def last_post_creator(topic)
@@ -18,8 +22,8 @@ module TopicsHelper
   def last_post_creator_name(topic)
     last_post_creator(topic).name
   end
-  
-  def reported?(topic)
+
+  def reported_topic?(topic)
     flagtopic = Flagtopic.where("topic_id = ? AND user_id = ?", topic.id, current_user.id)
     flagtopic.count > 0
   end
