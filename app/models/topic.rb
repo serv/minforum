@@ -4,7 +4,7 @@ class Topic < ActiveRecord::Base
   belongs_to :forum
   belongs_to :user
   accepts_nested_attributes_for :posts, :allow_destroy => true
-  attr_accessible :name, :last_post_id, :content
+  attr_accessible :name, :last_post_id, :content, :closed # :close is temporary
   before_save :init
 
   # validations

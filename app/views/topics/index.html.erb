@@ -43,7 +43,8 @@
         <td><%= topic.views %></td>
         <% if current_user.admin == true %>
           <td><%= link_to 'Edit', edit_topic_path(topic) %> 
-          <%= link_to 'Delete', topic, confirm: 'Are you sure?', method: :delete %></td>
+          <%= link_to 'Delete', topic, confirm: 'Are you sure?', method: :delete %></br>
+          </td>
         <% end %>
       </tr>
     <% end %>

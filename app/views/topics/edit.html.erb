@@ -7,7 +7,9 @@
     <%= form_for @topic do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       
-      <%= render 'form', :f => f %>
+      <p>
+        <%= render 'form', :f => f %>
+      </p>
       
       <%= f.submit "Edit", class: "btn btn-large btn-primary" %>
     <% end %>

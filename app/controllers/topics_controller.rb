@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_filter :signed_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
-  
+
   def index
     @forum = Forum.find(params[:forum_id])
     @topics = @forum.topics.includes(:posts).order('posts.updated_at DESC').paginate(page: params[:page])
@@ -10,7 +10,7 @@ class TopicsController < ApplicationController
     @forum = Forum.find(params[:forum_id])
     @topic = @forum.topics.build
   end
-  
+
   def create
     @forum = Forum.find(params[:forum_id])
     @topic = @forum.topics.build(params[:topic])
@@ -22,21 +22,21 @@ class TopicsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def edit
     @topic = Topic.find(params[:id])
   end
-  
+
   def update
     @topic = Topic.find(params[:id])
-    if @topic.update_attributes(params[:topic]) 
+    if @topic.update_attributes(params[:topic])
       flash[:success] = "Success!"
       redirect_to topic_posts_path(@topic)
     else
       render 'edit'
     end
   end
-  
+
   def destroy
     @topic = Topic.find(params[:id])
     forum_id = @topic.forum_id
@@ -44,5 +44,4 @@ class TopicsController < ApplicationController
     flash[:success] = "Topic deleted"
     redirect_to forum_topics_path(forum_id)
   end
-  
 end

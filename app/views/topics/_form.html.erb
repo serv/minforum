@@ -3,3 +3,9 @@
 
 <%= f.label :content %>
 <%= f.text_area :content %>
+
+<% if admin? || mod? %>
+  <%= f.label :closed %>
+  <%= hidden_field_tag 'topic[closed]', false %>
+  <%= check_box_tag 'topic[closed]', true, (@topic.closed == 1 ? true : false)%>
+<% end %>
