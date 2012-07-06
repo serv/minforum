@@ -1,0 +1,33 @@
+<div class="row" id="semi-header">
+  <div class="span10">
+    <h1>Messages</h1>
+    <%= link_to 'Sent messages', messages_sent_path %>
+  </div>
+  <div class="span2">
+    <%= link_to "Compose a New Message", new_message_path, html_options = {:class => "btn btn-large btn-primary"} %>
+  </div>
+</div>
+<table class="table">
+  <tbody>
+    <thead>
+      <tr>
+        <th>From</th>
+        <th>Subject</th>
+        <th>At</th>
+      </tr>
+    </thead>
+    <% @messages.each do |message| %>
+      <tr>
+        <td>
+          <%= link_to user_for_id_in_name(message.user_id), user_path(user_for_id(message.user_id)) %>
+        </td>
+        <td>
+          <%= link_to message.subject, message %>
+        </td>
+        <td>
+          <%= time_ago_in_words(message.created_at) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

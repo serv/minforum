@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120703234416) do
+ActiveRecord::Schema.define(:version => 20120706051745) do
 
   create_table "flagposts", :force => true do |t|
     t.integer  "user_id"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(:version => 20120703234416) do
     t.string   "name"
     t.text     "description"
     t.integer  "user_id"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "to_user"
+    t.string   "subject"
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "recipient"
+    t.boolean  "read",       :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "posts", :force => true do |t|

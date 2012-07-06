@@ -13,10 +13,12 @@ Minforum::Application.routes.draw do
   resources :posts do
     resources :flagposts
   end
+  resources :messages
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/flagtopics', to: 'flagtopics#index'
   match '/flagposts', to: 'flagposts#index'
+  match '/messages_sent', to: 'messages#sent'
 end

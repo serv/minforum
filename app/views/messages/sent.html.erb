@@ -1,0 +1,29 @@
+<div class="row" id="semi-header">
+  <div class="span12">
+    <h1>Sent messages</h1>
+  </div>
+</div>
+<table class="table">
+  <tbody>
+    <thead>
+      <tr>
+        <th>To</th>
+        <th>Subject</th>
+        <th>At</th>
+      </tr>
+    </thead>
+    <% @messages.each do |message| %>
+      <tr>
+        <td>
+          <%= link_to message.to_user, user_path(find_user_id_for_recipient(message.to_user)) %>
+        </td>
+        <td>
+          <%= link_to message.subject, message %>
+        </td>
+        <td>
+          <%= time_ago_in_words(message.created_at) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
