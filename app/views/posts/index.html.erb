@@ -14,7 +14,7 @@
   <% if !@topic.closed? %>
     <div class="span2">
       <%= link_to "New Post", new_topic_post_path, html_options = {:class => "btn btn-large btn-primary"} %></br>
-    </div>    
+    </div>
   <% end %>
 </div>
 
@@ -45,15 +45,18 @@
         </td>
         <td><%= link_to topic_creator_name(@topic), user_path(topic_creator(@topic)) %></td>
         <td><%= time_ago_in_words(@topic.created_at) %></td>
-        <td><%= link_to 'Edit', edit_topic_path(@topic) %>
-        <%= link_to 'Delete topic', @topic, confirm: 'Are you sure?', method: :delete %>
+        <td>
+          <% if @topic.user_id == current_user.id %>
+            <%= link_to 'Edit', edit_topic_path(@topic) %>
+            <%= link_to 'Delete topic', @topic, confirm: 'Are you sure?', method: :delete %>
+          <% end %>
         </td>
       </tr>
     <% @posts.each do |post| %>
       <tr>
         <td><%= simple_format(post.content) %>
           <% if post.user_id == current_user.id %>
-            <%= link_to 'Edit', edit_topic_post_path(@topic, post) %> 
+            <%= link_to 'Edit', edit_topic_post_path(@topic, post) %>
             <%= link_to 'Delete', [@topic, post], confirm: 'Are you sure?', method: :delete %>
           <% end %>
           <% if reported_post?(post) %>
@@ -68,7 +71,7 @@
         </td>
         <td><%= time_ago_in_words(post.created_at) %></td>
         <% if current_user.admin == true %>
-            <td><%= link_to 'Edit', edit_topic_post_path(@topic, post) %> 
+            <td><%= link_to 'Edit', edit_topic_post_path(@topic, post) %>
             <%= link_to 'Delete', [@topic, post], confirm: 'Are you sure?', method: :delete %></td>
         <% end %>
       </tr>
