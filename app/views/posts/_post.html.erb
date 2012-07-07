@@ -1,5 +1,6 @@
 <li>
   <div class="on_user_profile">
+    <span class="feed_topic"><%= link_to topic_name(post), topic_posts_path(topic_for_post(post)) %></span>
     <span class="feed_body"><%= simple_format(post.content) %></span>
     <span class="timestamp">
       Created <%= time_ago_in_words(post.created_at) %> ago.
@@ -7,7 +8,7 @@
     <% if current_user?(post.user) %>
     <span class="feed_setting">
       <% topic = Topic.find_by_id(post.topic_id) %>
-      <%= link_to "Edit", edit_topic_post_path(topic, post) %> <%= link_to 'Delete', [topic, post], confirm: 'Are you sure?', method: :delete %></td> 
+      <%= link_to "Edit", edit_topic_post_path(topic, post) %> <%= link_to 'Delete', [topic, post], confirm: 'Are you sure?', method: :delete %></td>
     <span>
     <% end %>
   </div>
