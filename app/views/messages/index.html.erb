@@ -1,9 +1,9 @@
 <div class="row" id="semi-header">
-  <div class="span10">
+  <div class="page-heading">
     <h1>Messages</h1>
     <%= link_to 'Sent messages', messages_sent_path %>
   </div>
-  <div class="span2">
+  <div class="new-button">
     <%= link_to "Compose a New Message", new_message_path, html_options = {:class => "btn btn-large btn-primary"} %>
   </div>
 </div>
@@ -11,9 +11,9 @@
   <tbody>
     <thead>
       <tr>
-        <th>From</th>
-        <th>Subject</th>
-        <th>At</th>
+        <th class="from-column">From</th>
+        <th class="subject-column">Subject</th>
+        <th class="at-column">At</th>
       </tr>
     </thead>
     <% @messages.each do |message| %>
