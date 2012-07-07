@@ -2,7 +2,7 @@
 <% provide(:title, title_temp) %>
 
 <div class="row" id="semi-header">
-  <div class="span10">
+  <div class="page-heading">
     <h1>
       <%= @topic.name %>
       <% if @topic.closed? %>
@@ -12,7 +12,7 @@
     <%= link_to 'Forums', root_path %> > <%= link_to @forum.name, forum_topics_path(@forum) %>
   </div>
   <% if !@topic.closed? %>
-    <div class="span2">
+    <div class="new-button">
       <%= link_to "New Post", new_topic_post_path, html_options = {:class => "btn btn-large btn-primary"} %></br>
     </div>
   <% end %>
@@ -23,9 +23,9 @@
   <tbody>
     <thead>
       <tr>
-        <th>Posts</th>
-        <th>Users</th>
-        <th>Posted at</th>
+        <th class="post-content">Posts</th>
+        <th class="user-name">Users</th>
+        <th class="posted-at">Posted at</th>
         <% if current_user.admin == true %>
           <th>Settings</th>
         <% end %>

@@ -1,8 +1,8 @@
 <div class="row" id="semi-header">
-  <div class="span10">
+  <div class="page-heading">
     <h1>Forums</h1>
   </div>
-  <div class="span2">
+  <div class="new-button">
     <% if admin? %>
       <%= link_to "New Forum", new_forum_path, html_options = {:class => "btn btn-large btn-primary"} %>
     <% end %>
@@ -13,10 +13,10 @@
   <tbody>
     <thead>
       <tr>
-        <th>General Forums</th>
-        <th>Topics</th>
-        <th>Posts</th>
-        <th>Views</th>
+        <th class="forum-name">General Forums</th>
+        <th class="forum-topics-count">Topics</th>
+        <th class="forum-posts-count">Posts</th>
+        <th class="forum-views-count">Views</th>
         <% if admin? %>
           <th>Setting</th>
         <% end %>

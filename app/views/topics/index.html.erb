@@ -1,11 +1,11 @@
 <% provide(:title, @forum.name) %>
 
 <div class="row" id="semi-header">
-  <div class="span10">
+  <div class="page-heading">
     <h1><%= @forum.name %></h1>
     <%= link_to 'Forums', root_path %>
   </div>
-  <div class="span2">
+  <div class="new-button">
     <%= link_to "New Topic", new_forum_topic_path, html_options = {:class => "btn btn-large btn-primary"} %>
   </div>
 </div>
@@ -15,10 +15,10 @@
   <tbody>
     <thead>
       <tr>
-        <th>Topics</th>
-        <th>Last Post</th>
-        <th>Replies</th>
-        <th>Views</th>
+        <th class="topic-name">Topics</th>
+        <th class="last-post">Last Post</th>
+        <th class="replies-count">Replies</th>
+        <th class="views-count">Views</th>
         <% if current_user.admin == true %>
           <th>Settings</th>
         <% end %>
@@ -28,7 +28,7 @@
       <tr>
         <td>
           <% if !topic.closed? %>
-            <%= link_to topic.name, topic_posts_path(topic) %> 
+            <%= link_to topic.name, topic_posts_path(topic) %>
           <% else %>
             <strike><%= topic.name %></strike>
           <%end%>
@@ -42,7 +42,7 @@
         <td><%= topic.posts.count %></td>
         <td><%= topic.views %></td>
         <% if current_user.admin == true %>
-          <td><%= link_to 'Edit', edit_topic_path(topic) %> 
+          <td><%= link_to 'Edit', edit_topic_path(topic) %>
           <%= link_to 'Delete', topic, confirm: 'Are you sure?', method: :delete %></br>
           </td>
         <% end %>

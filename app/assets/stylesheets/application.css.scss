@@ -3,8 +3,8 @@
 /* universal */
 
 @mixin box_sizing {
-  -moz-box-sizing: border-box; 
-  -webkit-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -18,6 +18,18 @@ body {
 
 section {
   overflow: auto;
+}
+
+.navbar-inner {
+  .container {
+    max-width: 940px;
+    width: 75%;
+  }
+}
+
+.container {
+  max-width: 940px;
+  width: 75%;
 }
 
 /* typography */
@@ -154,4 +166,56 @@ aside {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+
+.page-heading {
+  min-width: 200px;
+  float: left;
+  margin-left: 20px;
+}
+.new-button {
+  float: right;
+  margin-left: 20px;
+  width: 20%;
+  text-align: right;
+}
+
+.forum-name {
+  min-width: 200px;
+}
+.forum-topics-count {
+  width: 10%;
+}
+.forum-posts-count {
+  width: 10%;
+}
+.forum-views-count{
+  width: 10%;
+}
+
+/* Topics */
+
+.topic-name {
+  min-width: 200px;
+}
+.last-post {
+  width: 20%;
+}
+.replies-count {
+  width: 10%;
+}
+.views-count {
+  width: 10%;
+}
+
+/* Posts */
+
+.post-content {
+  min-width: 200px;
+}
+.user-name {
+  width: 15%;
+}
+.posted-at {
+  width: 15%;
 }
