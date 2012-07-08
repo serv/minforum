@@ -1,8 +1,0 @@
-<% provide(:title, @message.subject) %>
-<div class="row">
-  <div class="span12">
-    <h1><%= @message.subject %></h1>
-    <h2>Sent to: <%= @message.to_user %></h2>
-    <p><%= simple_format(@message.content) %></p>
-  </div>
-</div>

@@ -7,9 +7,9 @@
   <tbody>
     <thead>
       <tr>
-        <th>To</th>
-        <th>Subject</th>
-        <th>At</th>
+        <th class="from-column">To</th>
+        <th class="subject-column">Subject</th>
+        <th class="at-column">At</th>
       </tr>
     </thead>
     <% @messages.each do |message| %>
@@ -18,7 +18,8 @@
           <%= link_to message.to_user, user_path(find_user_id_for_recipient(message.to_user)) %>
         </td>
         <td>
-          <%= link_to message.subject, message %>
+          <h3 class="message-subject"><%= message.subject %></h3>
+          <%= simple_format(message.content) %>
         </td>
         <td>
           <%= time_ago_in_words(message.created_at) %>

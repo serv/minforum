@@ -17,10 +17,6 @@ class MessagesController < ApplicationController
     end
   end
 
-  def show
-    @message = Message.find(params[:id])
-  end
-
   def index
     @messages = Message.where("to_user = ?", current_user.name)
   end
