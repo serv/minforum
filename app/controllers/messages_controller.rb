@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   include MessagesHelper
+  before_filter :signed_in_user, only: [:index, :new, :create, :edit, :update]
 
   def new
     @message = current_user.messages.build
