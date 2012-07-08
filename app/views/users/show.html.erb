@@ -1,29 +1,27 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <% if @user.admin == true %>
-        <h1 class="admin-name">
-          <%= @user.name %>
-        </h1>
-      <% elsif @user.mod == true %>
-        <h1 class="mod-name">
-          <%= @user.name %>
-        </h1>
-      <% else %>
-        <h1>
-          <%= @user.name %>
-        </h1>
-      <% end %>
-      <p>
-        <%= time_ago_in_words(@user.created_at) %> old
-      </p>
-      <p>
-        <%= @user.bio %>
-      </p>
-    </section>
-  </aside>
-  <div class="span8">
+<div class="row" id="semi-header">
+  <div class="sidebar-profile-summary">
+    <% if @user.admin == true %>
+      <h1 class="admin-name">
+        <%= @user.name %>
+      </h1>
+    <% elsif @user.mod == true %>
+      <h1 class="mod-name">
+        <%= @user.name %>
+      </h1>
+    <% else %>
+      <h1>
+        <%= @user.name %>
+      </h1>
+    <% end %>
+    <p>
+      <%= time_ago_in_words(@user.created_at) %> old
+    </p>
+    <p>
+      <%= @user.bio %>
+    </p>
+  </div>
+  <div class="feed-profile">
     <% if @user.posts.any? %>
       <h3>Posts (<%= @user.posts.count %>)</h3>
       <ol class="posts">
