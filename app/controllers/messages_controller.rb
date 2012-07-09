@@ -9,9 +9,10 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.build(params[:message])
     @message.recipient = find_user_id_for_recipient(@message.to_user)
+    @message.to_user = user_for_id(@message.recipient).name
     if @message.save
       flash[:success] = 'Success!'
-      redirect_to @message
+      redirect_to messages_sent_path
     else
       render 'new'
     end
