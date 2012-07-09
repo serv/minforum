@@ -1,17 +1,15 @@
-<div class="row">
-  <div class="span6 offset3">
-    <h1>Closing a topic.</h1>
+<div class="main-form">
+  <h1>Closing a topic.</h1>
 
-    <h2>Reasons for flagging</h2>
-    <%= @flagtopic.content %>
+  <h2>Reasons for flagging</h2>
+  <%= @flagtopic.content %>
 
-    <%= form_for [@topic, @flagtopic] do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+  <%= form_for [@topic, @flagtopic] do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :read %>
-      <%= f.check_box( 'read', {}, true, false) %>
+    <%= f.label :read %>
+    <%= f.check_box( 'read', {}, true, false) %>
 
-      <%= f.submit "Read", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
+    <%= f.submit "Read", class: "btn btn-large btn-primary" %>
+  <% end %>
 </div>

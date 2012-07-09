@@ -2,15 +2,13 @@
 
 <h1>Please tell us why you are reporting this topic.</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for [@topic, @flagtopic] do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
+<div class="main-form">
+  <%= form_for [@topic, @flagtopic] do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :content %>
-      <%= f.text_area :content %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
 
-      <%= f.submit "Report", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
+    <%= f.submit "Report", class: "btn btn-large btn-primary" %>
+  <% end %>
 </div>

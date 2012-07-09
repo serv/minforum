@@ -2,16 +2,14 @@
 
 <h1>Edit the topic</h1>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for @topic do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      
-      <p>
-        <%= render 'form', :f => f %>
-      </p>
-      
-      <%= f.submit "Edit", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
+<div class="main-form">
+  <%= form_for @topic do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    
+    <p>
+      <%= render 'form', :f => f %>
+    </p>
+    
+    <%= f.submit "Edit", class: "btn btn-large btn-primary" %>
+  <% end %>
 </div>

@@ -74,6 +74,11 @@ input, textarea, select, .uneditable-input {
   @extend .error;
 }
 
+.main-form {
+  border-left: 20px;
+  width: 60%;
+}
+
 /* semi-header */
 
 #semi-header {
