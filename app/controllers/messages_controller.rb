@@ -19,10 +19,10 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @messages = Message.where("to_user = ?", current_user.name)
+    @messages = Message.where("to_user = ?", current_user.name).order('messages.created_at DESC')
   end
 
   def sent
-    @messages = current_user.messages
+    @messages = current_user.messages.order('messages.created_at DESC')
   end
 end
