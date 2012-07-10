@@ -16,6 +16,8 @@ Minforum::Application.routes.draw do
   resources :messages
 
   match '/signup',  to: 'users#new'
+  match '/setting', to: 'users#setting'
+  match '/users/:id/change_password', to: 'users#change_password'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/flagtopics', to: 'flagtopics#index'

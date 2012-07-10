@@ -5,24 +5,31 @@ class User < ActiveRecord::Base
   has_many :topics, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :messages, dependent: :destroy
-  
+
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
-  
-  VALID_NAME_REGEX = /\A[[:word:]]+$/i
-  validates :name,  presence: true, length: { maximum: 50 }, format: { with: VALID_NAME_REGEX },
-                    uniqueness: { case_sensitive: false }
-  
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, 
-                    format: { with: VALID_EMAIL_REGEX },
-                    uniqueness: { case_sensitive: false }
-                    
-  validates :bio, length: { maximum: 1000 }
 
-  validates :password, presence: true, length: { minimum: 5 }
-  validates :password_confirmation, presence: true
-  
+  VALID_NAME_REGEX = /\A[[:word:]]+$/i
+  validates :name,
+            presence: true, :on => :create,
+            length: { maximum: 50 },
+            format: { with: VALID_NAME_REGEX },
+            uniqueness: { case_sensitive: false }
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email,
+            presence: true,
+            format: { with: VALID_EMAIL_REGEX },
+            uniqueness: { case_sensitive: false }
+  validates :bio,
+            length: { maximum: 2000 }
+  validates :password,
+            presence: true, :on => :create,
+            presence: true, :on => :change_password,
+            length: { minimum: 5 }
+  validates :password_confirmation,
+            presence: true, :on => :create,
+            presence: true, :on => :change_password
   private
 
     def create_remember_token

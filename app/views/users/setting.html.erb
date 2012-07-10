@@ -1,0 +1,9 @@
+<% provide(:title, "User setting") %>
+<h1>User setting</h1>
+
+<div class="main-form">
+  <ul>
+    <li><%= link_to "Change user info", edit_user_path(current_user) %></li>
+    <li><%= link_to "Change password", :controller => "users", :action => "change_password", :id => current_user %></li>
+  </ul>
+</div>
