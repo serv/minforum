@@ -5,5 +5,10 @@
   <ul>
     <li><%= link_to "Change user info", edit_user_path(current_user) %></li>
     <li><%= link_to "Change password", :controller => "users", :action => "change_password", :id => current_user %></li>
+    <% if admin? %>
+      <li><%= link_to "Users", users_path %></li>
+      <li><%= link_to "Flagged topics", flagtopics_path %></li>
+      <li><%= link_to "Flagged posts", flagposts_path %></li>
+    <% end %>
   </ul>
 </div>
