@@ -44,7 +44,7 @@
           <% end %>
         </td>
         <td><%= link_to topic_creator_name(@topic), user_path(topic_creator(@topic)) %></td>
-        <td><%= time_ago_in_words(@topic.created_at) %></td>
+        <td><%= time_ago_in_words(@topic.created_at) %> ago</td>
         <td>
           <% if @topic.user_id == current_user.id %>
             <%= link_to 'Edit', edit_topic_path(@topic) %>
@@ -69,7 +69,7 @@
         <td>
           <%= link_to post_creator_name(post), user_path(post_creator(post)) %>
         </td>
-        <td><%= time_ago_in_words(post.created_at) %></td>
+        <td><%= time_ago_in_words(post.created_at) %> ago</td>
         <% if current_user.admin == true %>
             <td><%= link_to 'Edit', edit_topic_post_path(@topic, post) %>
             <%= link_to 'Delete', [@topic, post], confirm: 'Are you sure?', method: :delete %></td>
