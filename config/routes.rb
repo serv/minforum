@@ -23,4 +23,6 @@ Minforum::Application.routes.draw do
   match '/flagtopics', to: 'flagtopics#index'
   match '/flagposts', to: 'flagposts#index'
   match '/messages_sent', to: 'messages#sent'
+  match '/about', to: 'pages#about'
+  match '/privacy', to: 'pages#privacy'
 end

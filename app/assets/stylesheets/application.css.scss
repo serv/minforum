@@ -36,8 +36,28 @@ section {
   margin-bottom: 10px;
 }
 
+/* footer */
+
 .footer {
   text-align: center;
+  padding: 20px 0;
+  width:80%;
+  float:center;
+  margin: auto;
+  margin-top: 40px;
+  border: 1px solid #DDD;
+  border-radius: 15px;
+}
+
+footer p {
+  font-size: 12px;
+  color: #777;
+  display: block;
+}
+
+footer a {
+  margin: 0 2em;
+  color: #777;
 }
 
 /* typography */
@@ -259,4 +279,9 @@ aside {
 .message-subject {
   font-size:14px;
   line-height:18px;
+}
+
+/* Privacy */
+.statement {
+  font-style: italic;
 }
