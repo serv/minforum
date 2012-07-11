@@ -29,7 +29,8 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
-    if @topic.update_attributes(params[:topic])
+    @topic.assign_attributes(params[:topic], :as => role_selector)
+    if @topic.save
       flash[:success] = "Success!"
       redirect_to topic_posts_path(@topic)
     else
@@ -44,4 +45,14 @@ class TopicsController < ApplicationController
     flash[:success] = "Topic deleted"
     redirect_to forum_topics_path(forum_id)
   end
+  
+  private
+  
+    def role_selector
+      if admin?
+        :admin
+      else
+        :default
+      end
+    end
 end
