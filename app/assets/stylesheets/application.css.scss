@@ -176,6 +176,22 @@ aside {
 }
 
 /* forums */
+.intro {
+  padding-top: 48px;
+  padding-bottom: 48px;
+  margin-bottom: 36px;
+  text-align: center;
+  border: 1px solid #DDD;
+  border-radius: 15px;
+  h1 {
+    font-size:5.0em;
+    line-height:1.1em;
+  }
+  p {
+    font-size:2em;
+    line-height:1.5em;
+  }
+}
 
 .forums, .topics, .posts {
   list-style: none;

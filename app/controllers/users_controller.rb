@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     User.count == 0 ? @user.admin = true : @user.admin = false
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to Minforum!"
+      flash[:success] = "Welcome to Minforum, #{@user.name}!"
       redirect_to @user
     else
       render 'new'
