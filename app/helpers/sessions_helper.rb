@@ -69,4 +69,12 @@ module SessionsHelper
       redirect_to root_path, notice: "You do not have permission to do that."
     end
   end
+  
+  def role_selector
+    if admin? || mod?
+      :admin
+    else
+      :default
+    end
+  end
 end

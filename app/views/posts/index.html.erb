@@ -46,7 +46,7 @@
         <td><%= link_to topic_creator_name(@topic), user_path(topic_creator(@topic)) %></td>
         <td><%= time_ago_in_words(@topic.created_at) %> ago</td>
         <td>
-          <% if @topic.user_id == current_user.id %>
+          <% if @topic.user_id == current_user.id || admin? || mod? %>
             <%= link_to 'Edit', edit_topic_path(@topic) %>
             <%= link_to 'Delete topic', @topic, confirm: 'Are you sure?', method: :delete %>
           <% end %>

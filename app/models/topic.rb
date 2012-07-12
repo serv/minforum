@@ -1,6 +1,6 @@
 class Topic < ActiveRecord::Base
   include ActiveModel::MassAssignmentSecurity
-  
+
   has_many :posts, :dependent => :destroy
   has_many :flagtopics, :dependent => :destroy
   belongs_to :forum
@@ -20,7 +20,7 @@ class Topic < ActiveRecord::Base
     self.views ||= 0
     self.last_post_id ||= Post.count + 1
   end
-  
+
   def assign_attributes(values, options = {})
     sanitize_for_mass_assignment(values, options[:as]).each do |k, v|
       send("#{k}=", v)

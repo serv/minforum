@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :bio
+  attr_accessible :name, :email, :password, :password_confirmation, :bio, :mod, :as => :admin
   has_secure_password
   has_many :forums, dependent: :destroy
   has_many :topics, dependent: :destroy
@@ -30,6 +31,13 @@ class User < ActiveRecord::Base
   validates :password_confirmation,
             presence: true, :on => :create,
             presence: true, :on => :change_password
+
+  def assign_attributes(values, options = {})
+    sanitize_for_mass_assignment(values, options[:as]).each do |k, v|
+      send("#{k}=", v)
+    end
+  end
+
   private
 
     def create_remember_token

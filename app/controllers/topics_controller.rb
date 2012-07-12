@@ -45,14 +45,4 @@ class TopicsController < ApplicationController
     flash[:success] = "Topic deleted"
     redirect_to forum_topics_path(forum_id)
   end
-  
-  private
-  
-    def role_selector
-      if admin?
-        :admin
-      else
-        :default
-      end
-    end
 end
