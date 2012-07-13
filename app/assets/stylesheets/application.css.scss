@@ -27,6 +27,33 @@ section {
   }
 }
 
+#message {
+  width: 24px;
+  height: 16px;
+  padding:12px;
+  background-repeat: no-repeat;
+  background-image: url('glyphicons_010_envelope_silver.png');
+  background-position:center;
+}
+#message:hover{
+  width: 24px;
+  height: 16px;
+  background-image: url('glyphicons_010_envelope_white.png');
+}
+#new-message{
+  width: 24px;
+  height: 16px;
+  padding:12px;
+  background-repeat: no-repeat;
+  background-image: url('glyphicons_010_envelope_orange.png');
+  background-position:center;
+}
+#new-message:hover{
+  width: 24px;
+  height: 16px;
+  background-image: url('glyphicons_010_envelope_orange_hov.png');
+}
+
 .container {
   max-width: 940px;
   width: 75%;
@@ -294,6 +321,9 @@ aside {
 .message-subject {
   font-size:14px;
   line-height:18px;
+}
+.new-message-row {
+  background-color: #d9edf7;
 }
 
 /* Privacy */

@@ -1,4 +1,6 @@
-<%= render 'pages/intro' %>
+<% if !signed_in? %>
+  <%= render 'pages/intro' %>
+<% end %>
 <div class="row" id="semi-header">
   <div class="page-heading">
     <h1>Forums</h1>

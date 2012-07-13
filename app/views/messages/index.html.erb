@@ -17,18 +17,33 @@
       </tr>
     </thead>
     <% @messages.each do |message| %>
-      <tr>
-        <td>
-          <%= link_to user_for_id_in_name(message.user_id), user_path(user_for_id(message.user_id)) %>
-        </td>
-        <td>
-          <h3 class="message-subject"><%= message.subject %></h3>
-          <%= simple_format(message.content) %>
-        </td>
-        <td>
-          <%= time_ago_in_words(message.created_at) %>
-        </td>
-      </tr>
+      <% if is_read?(message) %>
+        <tr>
+          <td>
+            <%= link_to user_for_id_in_name(message.user_id), user_path(user_for_id(message.user_id)) %>
+          </td>
+          <td>
+            <h3 class="message-subject"><%= message.subject %></h3>
+            <%= simple_format(message.content) %>
+          </td>
+          <td>
+            <%= time_ago_in_words(message.created_at) %>
+          </td>
+        </tr>
+      <% else %>
+        <tr class="new-message-row">
+          <td>
+            <%= link_to user_for_id_in_name(message.user_id), user_path(user_for_id(message.user_id)) %>
+          </td>
+          <td>
+            <h3 class="message-subject"><%= message.subject %></h3>
+            <%= simple_format(message.content) %>
+          </td>
+          <td>
+            <%= time_ago_in_words(message.created_at) %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

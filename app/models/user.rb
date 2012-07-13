@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :bio
-  attr_accessible :name, :email, :password, :password_confirmation, :bio, :mod, :as => :admin
+  attr_accessible :name, :email, :password,
+                  :password_confirmation, :bio
+  attr_accessible :name, :email, :password,
+                  :password_confirmation, :bio,
+                  :mod, :as => :admin
   has_secure_password
   has_many :forums, dependent: :destroy
   has_many :topics, dependent: :destroy
