@@ -1,6 +1,10 @@
 module MessagesHelper
+  def find_user_for_recipient(to_user)
+    User.find(:first, :conditions => ["lower(name) = ?", to_user.downcase])
+  end
+  
   def find_user_id_for_recipient(to_user)
-    User.find(:first, :conditions => ["lower(name) = ?", to_user.downcase]).id
+    find_user_for_recipient(to_user).id
   end
 
   def user_for_id(user_id)
