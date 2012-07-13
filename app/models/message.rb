@@ -3,6 +3,6 @@ class Message < ActiveRecord::Base
   belongs_to :user
   
   validates :to_user, presence: true
-  validates :subject, length { maximum: 140 }
+  validates :subject, length: { maximum: 140 }
   validates :content, presence: true, length { maximum: 20000 }
 end
