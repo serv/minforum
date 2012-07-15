@@ -17,10 +17,11 @@ module MessagesHelper
 
   def user_got_a_message(recipient_id)
     recipient = user_for_id(recipient_id)
-    recipient.new_message = true
-    recipient.save
+    @state = recipient.state
+    @state.new_message = true
+    @state.save
   end
-
+  
   def messages_being_read(messages)
     messages.where('read < ?', 3).each do |message|
       message.read += 1
@@ -33,11 +34,10 @@ module MessagesHelper
   end
 
   def current_user_has_no_new_message
-    @user = current_user
-    if @user.new_message == true
-      @user.new_message = false
-      @user.save
-      sign_in @user
+    @state = current_user.state
+    if @state.new_message == true
+      @state.new_message = false
+      @state.save
       redirect_to messages_path
     end
   end

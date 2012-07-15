@@ -1,15 +1,19 @@
 class User < ActiveRecord::Base
   attr_accessible :name, :email, :password,
-                  :password_confirmation, :bio
+                  :password_confirmation, :bio,
+                  :new_message
   attr_accessible :name, :email, :password,
                   :password_confirmation, :bio,
-                  :mod, :as => :admin
+                  :new_message, :mod,
+                  :as => :admin
   has_secure_password
   has_many :forums, dependent: :destroy
   has_many :topics, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_one  :state
 
+  before_create :build_default_state
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
@@ -45,5 +49,9 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
+    end
+
+    def build_default_state
+      build_state(:new_message => false)
     end
 end

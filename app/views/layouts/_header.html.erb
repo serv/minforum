@@ -5,7 +5,7 @@
       <nav>
         <ul class="nav pull-right">
           <% if signed_in? %>
-            <% if current_user.new_message == true %>
+            <% if current_user.state.new_message == true %>
               <li><%= link_to '', messages_path, :id => 'new-message'%></li>
             <% else %>
               <li><%= link_to '', messages_path, :id => 'message'%></li>

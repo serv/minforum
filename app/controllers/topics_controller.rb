@@ -13,7 +13,7 @@ class TopicsController < ApplicationController
 
   def create
     @forum = Forum.find(params[:forum_id])
-    @topic = @forum.topics.build(params[:topic])
+    @topic = @forum.topics.build(params[:topic], :as => role_selector)
     @topic.user_id = current_user.id
     if @topic.save
       flash[:success] = "Success!"

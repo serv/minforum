@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120713052434) do
+ActiveRecord::Schema.define(:version => 20120715000659) do
 
   create_table "flagposts", :force => true do |t|
     t.integer  "user_id"
@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(:version => 20120713052434) do
     t.integer  "user_id"
   end
 
+  create_table "states", :force => true do |t|
+    t.boolean  "new_message"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "topics", :force => true do |t|
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
@@ -80,7 +87,6 @@ ActiveRecord::Schema.define(:version => 20120713052434) do
     t.boolean  "admin",           :default => false
     t.text     "bio"
     t.boolean  "mod",             :default => false
-    t.boolean  "new_message",     :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
