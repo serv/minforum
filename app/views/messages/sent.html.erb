@@ -19,7 +19,7 @@
         </td>
         <td>
           <h3 class="message-subject"><%= message.subject %></h3>
-          <%= simple_format(message.content) %>
+          <%= markdown(message.content) %>
         </td>
         <td>
           <%= time_ago_in_words(message.created_at) %>
