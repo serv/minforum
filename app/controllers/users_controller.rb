@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_filter :admin_user,     only: [:index, :destroy]
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_name(params[:id].downcase)
     @forums = @user.forums.paginate(page: params[:page])
     @topics = @user.topics.paginate(page: params[:page])
     @posts = @user.posts.paginate(page: params[:page])
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
+    User.find_by_name(params[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_path
   end
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find_by_name(params[:id].downcase)
       redirect_to(root_path) unless current_user?(@user) || admin?
     end
 

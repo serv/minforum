@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
       send("#{k}=", v)
     end
   end
+  
+  def to_param
+    name
+  end
 
   private
 
