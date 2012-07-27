@@ -25,4 +25,5 @@ Minforum::Application.routes.draw do
   match '/messages_sent', to: 'messages#sent'
   match '/about', to: 'pages#about'
   match '/privacy', to: 'pages#privacy'
+  match '/new', to: 'topics#new_topics'
 end

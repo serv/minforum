@@ -6,6 +6,10 @@ module TopicsHelper
   def topic_creator_name(topic)
     topic_creator(topic).name
   end
+  
+  def match_forum(topic)
+    Forum.find(topic.forum_id)
+  end
 
   def last_post(topic)
     if topic.posts.count < 1 # if the topic doesn't have any posts
