@@ -20,7 +20,7 @@
       <tr>
         <td><%= time_ago_in_words(topic.updated_at) %></td>
         <td><%= link_to topic_creator_name(topic), user_path(topic_creator_name(topic)) %></td>
-        <td><%= link_to topic.name, forum_topic_path(match_forum(topic), topic) %></td>
+        <td><%= link_to topic.name, topic_posts_path(topic) %></td>
         <td><%= link_to match_forum(topic).name, forum_topics_path(match_forum(topic)) %></td>
       </tr>
     <% end %>
