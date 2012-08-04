@@ -1,8 +1,8 @@
-<% provide(:title, 'Updated Topics') %>
+<% provide(:title, 'Popular Topics') %>
 
 <div class="row" id="semi-header">
   <div class="page-heading">
-    <h1><%= 'New' %></h1>
+    <h1><%= 'Popular' %></h1>
   </div>
 </div>
 
@@ -10,7 +10,7 @@
   <tbody>
     <thead>
       <tr>
-        <th class='new-updated'>Updated</th>
+        <th class='new-created'>Created</th>
         <th class='new-user'>User</th>
         <th class='new-title'>Title</th>
         <th class='new-forum'>Forum</th>
@@ -18,7 +18,7 @@
     </thead>
     <% @topics.each do |topic| %>
       <tr>
-        <td><%= time_ago_in_words(topic.updated_at) %></td>
+        <td><%= time_ago_in_words(topic.created_at) %></td>
         <td><%= link_to topic_creator_name(topic), user_path(topic_creator_name(topic)) %></td>
         <td><%= link_to topic.name, topic_posts_path(topic) %></td>
         <td><%= link_to match_forum(topic).name, forum_topics_path(match_forum(topic)) %></td>

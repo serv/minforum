@@ -45,8 +45,13 @@ class TopicsController < ApplicationController
     flash[:success] = "Topic deleted"
     redirect_to forum_topics_path(forum_id)
   end
-  
+
   def new_topics
     @topics = Topic.order('updated_at DESC').limit(20)
+  end
+
+  def popular_topics
+    @topics = Topic.order('views DESC').limit(20)
+    # need an algorithm to order popular topics
   end
 end

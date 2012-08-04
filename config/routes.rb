@@ -26,4 +26,5 @@ Minforum::Application.routes.draw do
   match '/about', to: 'pages#about'
   match '/privacy', to: 'pages#privacy'
   match '/new', to: 'topics#new_topics'
+  match '/popular', to: 'topics#popular_topics'
 end
