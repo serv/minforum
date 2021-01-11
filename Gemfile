@@ -7,7 +7,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
-gem 'redcarpet', '~> 2.1.1'
+gem 'redcarpet', '~> 3.5.1'
 gem 'coderay', '~> 1.0.7'
 
 group :development, :test do
